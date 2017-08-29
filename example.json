@@ -1,0 +1,26 @@
+{
+ "executions":
+  [
+   {"id": 1,
+    "steps": [
+      {"name": "step1", "timeMs": 5000},
+      {"name": "step2", "timeMs": 1000},
+      {"name": "step3", "timeMs": 30000},
+      {"name": "step4", "timeMs": 10000}]
+   },
+   {"id": 2,
+    "steps": [
+      {"name": "step1", "timeMs": 5000},
+      {"name": "step2", "timeMs": 1000},
+      {"name": "step3", "timeMs": 20000},
+      {"name": "step4", "timeMs": 15000}]
+   },
+   {"id": 3,
+    "steps": [
+      {"name": "step1", "timeMs": 5000},
+      {"name": "step2", "timeMs": 1000},
+      {"name": "step3", "timeMs": 40000},
+      {"name": "step4", "timeMs": 50000}]
+   }
+  ]
+}
