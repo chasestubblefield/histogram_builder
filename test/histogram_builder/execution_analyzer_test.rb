@@ -51,12 +51,24 @@ class ExecutionAnalyzerTest < Minitest::Test
   def test_medians
     assert_equal(
       [
-        ["step1", 5000],
-        ["step2", 1000],
-        ["step3", 30000],
-        ["step4", 15000]
+        ["step1", 5000.0],
+        ["step2", 1000.0],
+        ["step3", 30000.0],
+        ["step4", 15000.0]
       ],
       @analyzer.medians
+    )
+  end
+
+  def test_averages
+    assert_equal(
+      [
+        ["step1", 5000.0],
+        ["step2", 1000.0],
+        ["step3", 30000.0],
+        ["step4", 25000.0]
+      ],
+      @analyzer.averages
     )
   end
 end
