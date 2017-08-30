@@ -8,7 +8,7 @@ module HistogramBuilder
   def self.run(path)
     data = JSON.parse(File.read(path), symbolize_names: true)
     analyzer = ExecutionAnalyzer.new(data[:executions].to_a)
-    graph = BarGraph.new(analyzer.medians)
+    graph = BarGraph.new(analyzer.medians, scale: 0.001)
     puts graph.generate
   end
 end

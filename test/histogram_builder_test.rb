@@ -6,7 +6,6 @@ class HistogramBuilderTest < Minitest::Test
   end
 
   def test_that_it_works_on_example
-    skip
     sample = File.expand_path('../example.json', __FILE__)
     output, _ = capture_io { ::HistogramBuilder.run(sample) }
     expected = <<-DOC
