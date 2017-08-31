@@ -15,6 +15,19 @@ DOC
       assert_equal expected, graph.generate
     end
 
+    def test_generate_with_scale
+      names_and_time_ms = [
+        ["step1", 1000],
+        ["step2", 2000],
+      ]
+      graph = BarGraph.new(names_and_time_ms, scale: 1000)
+      expected = <<-DOC
+step2: (2.0s) ##
+step1: (1.0s) #
+DOC
+      assert_equal expected, graph.generate
+    end
+
     def test_generate_does_justification
       names_and_time_ms = [
         ["foo", 10],
