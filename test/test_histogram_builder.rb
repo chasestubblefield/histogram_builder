@@ -1,6 +1,6 @@
-require 'test_helper'
+require 'helper'
 
-class HistogramBuilderTest < Minitest::Test
+class TestHistogramBuilder < Minitest::Test
   def test_that_it_has_a_version
     refute_nil ::HistogramBuilder::VERSION
   end
