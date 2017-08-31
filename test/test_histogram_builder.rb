@@ -9,10 +9,10 @@ class TestHistogramBuilder < Minitest::Test
     sample = File.expand_path('../example.json', __FILE__)
     output, _ = capture_io { ::HistogramBuilder.run(sample) }
     expected = <<-DOC
-step3: (30s) ##############################
-step4: (15s) ###############
-step1: (5s)  #####
-step2: (1s)  #
+step3: (30.0s) ##############################
+step4: (15.0s) ###############
+step1: (5.0s)  #####
+step2: (1.0s)  #
 DOC
     assert_equal expected, output
   end
