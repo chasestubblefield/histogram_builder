@@ -57,4 +57,3 @@ module HistogramBuilder
 
   end
 end
-j
