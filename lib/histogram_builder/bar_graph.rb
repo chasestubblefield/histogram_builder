@@ -28,7 +28,7 @@ module HistogramBuilder
 
       # output line for each name
       sorted.reduce("") do |result, (name, time_ms, time_s)|
-        name_column = "#{name}:".ljust(longest_name + 1)
+        name_column = "#{name}:".rjust(longest_name + 1)
         time_column = "(#{time_s}s)".ljust(longest_time + 3)
         bar_column = "#" * (time_ms / @scale).to_i
         result + [name_column, time_column, bar_column].join(" ") + "\n"
