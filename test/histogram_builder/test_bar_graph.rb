@@ -40,5 +40,20 @@ module HistogramBuilder
       EOF
       assert_equal expected, graph.generate
     end
+
+    def test_generate_can_auto_scale
+      names_and_time_ms = [
+        ["step1", 3600000],
+        ["step2", 1],
+        ["step3", 180000],
+      ]
+      graph = BarGraph.new(names_and_time_ms, scale: :auto)
+      expected = <<~EOF
+        step1: (3600.0s) ############################################################
+        step3: (180.0s)  ###
+        step2: (0.001s)  #
+      EOF
+      assert_equal expected, graph.generate
+    end
   end
 end

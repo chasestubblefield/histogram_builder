@@ -11,6 +11,7 @@ module HistogramBuilder
         @order = options[:order].to_sym
       end
       @scale = options[:scale].is_a?(Numeric) ? options[:scale] : 1
+      @scale = auto_scale if options[:scale] == :auto
     end
 
     # generates the graph as a String, a visual comparison of the given numbers
@@ -30,8 +31,21 @@ module HistogramBuilder
       sorted.reduce("") do |result, (name, time_ms, time_s)|
         name_column = "#{name}:".rjust(longest_name + 1)
         time_column = "(#{time_s}s)".ljust(longest_time + 3)
-        bar_column = "#" * (time_ms / @scale).to_i
+        bar_column = "#" * (time_ms / @scale.to_f).ceil
         result + [name_column, time_column, bar_column].join(" ") + "\n"
+      end
+    end
+
+    private
+
+    def auto_scale
+      max_time_ms = @names_and_time_ms.map { |(_, time_ms)| time_ms }.max
+      if max_time_ms >= 60 * 60 * 1000 # use minute scale if greater than 1 hour
+        60 * 1000
+      elsif max_time_ms >= 60 * 1000 # use seconds scale if greater than 1 minute
+        1000
+      else # else use milliseconds scale
+        1
       end
     end
   end
