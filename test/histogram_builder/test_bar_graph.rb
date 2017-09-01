@@ -8,10 +8,10 @@ module HistogramBuilder
         ["step2", 2],
       ]
       graph = BarGraph.new(names_and_time_ms)
-      expected = <<-DOC
-step2: (0.002s) ##
-step1: (0.001s) #
-DOC
+      expected = <<~EOF
+        step2: (0.002s) ##
+        step1: (0.001s) #
+      EOF
       assert_equal expected, graph.generate
     end
 
@@ -21,10 +21,10 @@ DOC
         ["step2", 2000],
       ]
       graph = BarGraph.new(names_and_time_ms, scale: 1000)
-      expected = <<-DOC
-step2: (2.0s) ##
-step1: (1.0s) #
-DOC
+      expected = <<~EOF
+        step2: (2.0s) ##
+        step1: (1.0s) #
+      EOF
       assert_equal expected, graph.generate
     end
 
@@ -34,10 +34,10 @@ DOC
         ["foobar", 100],
       ]
       graph = BarGraph.new(names_and_time_ms, scale: 10)
-      expected = <<-DOC
-foobar: (0.1s)  ##########
-   foo: (0.01s) #
-DOC
+      expected = <<~EOF
+        foobar: (0.1s)  ##########
+           foo: (0.01s) #
+      EOF
       assert_equal expected, graph.generate
     end
   end
