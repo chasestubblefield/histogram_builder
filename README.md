@@ -15,5 +15,9 @@ bundle install
 Then run with:
 
 ```bash
-./bin/histogram_builder example.json
+./bin/histogram_builder test/example.json
+step3: (30.0s) ##############################
+step4: (15.0s) ###############
+step1: (5.0s)  #####
+step2: (1.0s)  #
 ```
