@@ -39,11 +39,17 @@ module HistogramBuilder
 
     def auto_scale
       max_time_ms = @names_and_time_ms.map { |(_, time_ms)| time_ms }.max
-      if max_time_ms >= 60 * 60 * 1000 # use minute scale if greater than 1 hour
+
+      # the idea is to never have the largest value be more than 60 symbols
+      if max_time_ms > 60 * 60 * 1000 # use 2 minute scale if greater than 1 hour
+        2 * 60 * 1000
+      elsif max_time_ms > 60 * 1000 # use minute scale if greater than minute
         60 * 1000
-      elsif max_time_ms >= 60 * 1000 # use seconds scale if greater than 1 minute
+      elsif max_time_ms > 1000 # use seconds scale if greater than second
         1000
-      else # else use milliseconds scale
+      elsif max_time_ms > 10 # use 100 millisecends scale
+        100
+      else # else milliseconds scale
         1
       end
     end
