@@ -10,8 +10,7 @@ module HistogramBuilder
       if options[:order] && %i(asc desc).include?(options[:order].to_sym)
         @order = options[:order].to_sym
       end
-      @scale = options[:scale].is_a?(Numeric) ? options[:scale] : 1
-      @scale = auto_scale if options[:scale] == :auto
+      @scale = options[:scale].is_a?(Numeric) ? options[:scale] : auto_scale
     end
 
     # generates the graph as a String, a visual comparison of the given numbers

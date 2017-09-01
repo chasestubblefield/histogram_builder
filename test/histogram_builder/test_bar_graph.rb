@@ -7,7 +7,7 @@ module HistogramBuilder
         ["step1", 1],
         ["step2", 2],
       ]
-      graph = BarGraph.new(names_and_time_ms)
+      graph = BarGraph.new(names_and_time_ms, scale: 1)
       expected = <<~EOF
         step2: (0.002s) ##
         step1: (0.001s) #
@@ -47,7 +47,7 @@ module HistogramBuilder
         ["step2", 1],
         ["step3", 180000],
       ]
-      graph = BarGraph.new(names_and_time_ms, scale: :auto)
+      graph = BarGraph.new(names_and_time_ms)
       expected = <<~EOF
         step1: (3600.0s) ############################################################
         step3: (180.0s)  ###
